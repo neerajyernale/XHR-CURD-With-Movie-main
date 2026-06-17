@@ -205,8 +205,19 @@ xhr.onload = function () {
     if (xhr.status >= 200 && xhr.status <= 299) {
         ele.closest('.col-md-6').remove();
         Swal.fire({
-            title: "Movie Deleted Successfully",
-            icon: "success"
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!"
+        }).then((result) => {
+        if (result.isConfirmed) Swal.fire({
+        title: "Deleted!",
+        text: "Your file has been deleted.",
+        icon: "success"
+        });
         });
   spinner.classList.add('d-none');
 
